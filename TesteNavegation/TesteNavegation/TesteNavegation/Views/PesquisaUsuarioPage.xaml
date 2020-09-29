@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TesteNavegation.Views.PesquisaUsuarioPage">
+    <Grid BackgroundColor="#DD8E39">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="70*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <!--<ColumnDefinition Width="*"/>-->
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="1" Grid.Column="0" Text="Pesquisar" 
+                VerticalOptions="Start" Command="{Binding BtnPesquisar}" BorderColor="#472700" BorderWidth="5"
+                    CornerRadius="15" BackgroundColor="#DD8A24" FontAttributes="Bold" 
+                    FontSize="15" TextColor="#592E00" Margin="30,0,30,0"/>
+        
+        
+        <ListView Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Usuarios}"
+                  HasUnevenRows="True" CachingStrategy="RecycleElement" ItemSelected="ListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid RowSpacing="10" Padding="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" 
+                               BackgroundColor="White" CornerRadius="10" 
+                               BorderColor="Black" VerticalOptions="FillAndExpand" 
+                               HorizontalOptions="FillAndExpand"/>
+
+
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding NomeFormatado}" FontSize="Medium" 
+                               LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="Black"
+                               Margin="15, 15, 15, 0">
+                                <Label.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                                </Label.FontFamily>
+
+                            </Label>
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding UsuarioFormatado}" 
+                               LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="Black"
+                               Margin="15, 0, 15, 15">
+                                <Label.FontFamily>
+                                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                                </Label.FontFamily>
+
+                            </Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <Grid Grid.Row="0" Grid.Column="0" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Text="Nome"/>
+            <Entry Grid.Row="1" Grid.Column="0" Placeholder="Insira o nome" 
+                   IsEnabled="{Binding IsReadNome}" Text="{Binding EntryNome}"/>
+            <RadioButton Grid.Row="1" Grid.Column="1" IsChecked="{Binding IsCheckedNome}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Text="Usuario"/>
+            <Entry Grid.Row="3" Grid.Column="0" Placeholder="Insira o Usuario"
+                   IsEnabled="{Binding IsReadUsuario}" Text="{Binding EntryUsuario}"/>
+            <RadioButton Grid.Row="3" Grid.Column="1" IsChecked="{Binding IsCheckedUsuario}"
+                         CheckedChanged="UsuarioChanged"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TesteNavegation.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <Grid BackgroundColor="#DD8E39" RowSpacing="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="55*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Text="&#xf502;" VerticalOptions="Center" HorizontalOptions="Center"
+               FontSize="200" TextColor="#592E00" FontAttributes="Bold" Padding="10, 20, 10, 10">
+            <Label.FontFamily>
+                <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+            </Label.FontFamily>
+
+        </Label>
+
+
+        <Grid VerticalOptions="FillAndExpand" Padding="25" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#DD8A24" TextColor="Black"
+               Text="{Binding EntryLogin}" Margin="30,0,0,0"/>
+
+            <Label Grid.Row="0" Grid.Column="0" FontSize="20" TextColor="#592E00"
+                   FontAttributes="Bold" Text="&#xf007;" VerticalOptions="Center" Padding="5,0,0,0">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+
+            <Entry Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#DD8A24" TextColor="Black"
+               IsPassword="True" Text="{Binding EntrySenha}" Margin="30,0,0,0"/>
+
+            <Label Grid.Row="1" Grid.Column="0" FontSize="20" TextColor="#592E00"
+                   FontAttributes="Bold" Text="&#xf023;" VerticalOptions="Center" Padding="5,0,0,0">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+
+            <Button Text="Entrar" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,15,0,15"
+                    Command="{Binding Btn_Entrar}" BorderColor="#472700" BorderWidth="5"
+                    CornerRadius="15" BackgroundColor="#DD8A24" FontAttributes="Bold" 
+                    FontSize="20" TextColor="#592E00">
+                <Button.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Button.FontFamily>
+                
+            </Button>
+
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" TextColor="#592E00"
+                   FontAttributes="Bold" Text="&#xf234; Cadastrar" 
+                   VerticalOptions="Center"  BackgroundColor="#DD8A24"
+                    CornerRadius="15" BorderWidth="5" BorderColor="#472700"
+                    Command="{Binding NovoCadastro}">
+                <Button.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Button.FontFamily>
+            </Button>
+
+            <Label  VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                Grid.Row="4" Grid.ColumnSpan="2" Text="{Binding LblValidade}"/>
+
+        </Grid>
+    </Grid>
+    
+</ContentPage>

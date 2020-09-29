@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TesteNavegation.Views.UsuarioPage"
+             >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Priority = "1" Order = "Primary" Command="{Binding BtnLogout}"  
+                     IconImageSource="sair.png"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid BackgroundColor="#DD8E39">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Text="BEM VINDO: ESCOLHA UMA OPÇÃO" HorizontalOptions="Center" 
+               VerticalOptions="Center"
+               FontSize="Large" TextColor="#592E00" FontAttributes="Bold">
+            <Label.FontFamily>
+                <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+            </Label.FontFamily>
+        </Label>
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalOptions="Center" Padding="50,0,50,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="1" Grid.Column="0" Text="&#xf234;" FontSize="80" FontAttributes="Bold" 
+                   TextColor="Black">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Tapped_Cadastrar}"                       
+                        />
+                </Label.GestureRecognizers>
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+            <Label Grid.Row="1" Grid.Column="2" Text="&#xf022;" FontSize="100" TextColor="Black"
+                   FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Tapped_Listar}"/>
+                </Label.GestureRecognizers>
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+            <Label Grid.Row="2" Grid.Column="0" Text="Cadastrar" HorizontalOptions="Center"
+                    TextColor="Black" FontAttributes="Bold">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+            <Label Grid.Row="2" Grid.Column="2" Text="Listar" HorizontalOptions="Center" 
+                   FontAttributes="Bold" TextColor="Black">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+            </Label>
+        </Grid>
+    </Grid>
+
+</ContentPage>

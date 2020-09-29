@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TesteNavegation.Views.ListarPage"
+             Title="Lista de Usuários">
+
+        <ListView x:Name="click" ItemsSource="{Binding Usuarios}" CachingStrategy="RecycleElement" HasUnevenRows="True"
+                  ItemSelected="click_ItemSelected" BackgroundColor="#DD8E39">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid RowSpacing="10" Padding="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" 
+                               BackgroundColor="White" CornerRadius="10" 
+                               BorderColor="Black" VerticalOptions="FillAndExpand" 
+                               HorizontalOptions="FillAndExpand"/>
+                        <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Source="{Binding picture}"
+                               Aspect="AspectFill" HeightRequest="50" HorizontalOptions="Start"
+                               Margin="15, 15, 0, 0"/>
+
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding NomeFormatado}" FontSize="Medium" 
+                               LineBreakMode="TailTruncation" FontAttributes="Bold" TextColor="Black"
+                               Margin="100, 15, 15, 0">
+                            <Label.FontFamily>
+                                <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                            </Label.FontFamily>
+
+                        </Label>
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding UsuarioFormatado}"
+                                FontAttributes="Bold" TextColor="Black" Margin="100, 0, 15, 0">
+                            <Label.FontFamily>
+                                <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                            </Label.FontFamily>
+
+                        </Label>
+                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding EnderecoFormatado}"
+                                FontAttributes="Bold" TextColor="Black" Margin="100, 0, 15, 15">
+                            <Label.FontFamily>
+                                <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                            </Label.FontFamily>
+
+                        </Label>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
+   
+</ContentPage>

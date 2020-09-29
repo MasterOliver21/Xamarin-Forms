@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TesteNavegation.Views.TesteCameraView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Row="0" Grid.Column="0" IsVisible="False" IsEnabled="False" x:Name="Img" Margin="15,15,0,0" />
+        <BoxView x:Name="Box" Grid.Row="0" Grid.Column="0" BackgroundColor="#E0DFDE" CornerRadius="15" 
+                 Margin="15,15,0,0" IsEnabled="True" IsVisible="True">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Button_Clicked"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
+        <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="LightGray" CornerRadius="15" 
+                 Margin="15,15,15,0"/>
+        <BoxView Grid.Row="2" Grid.Column="0" BackgroundColor="LightGray" CornerRadius="15" 
+                 Margin="15,15,0,15"/>
+
+        <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold"
+               Text="&#xf030;" Margin="15,15,0,0" FontSize="60"
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+               TextColor="Snow" IsEnabled="True" IsVisible="True" x:Name="Label">
+            <Label.FontFamily>
+                <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+            </Label.FontFamily>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Button_Clicked"/>
+            </Label.GestureRecognizers>
+        </Label>
+       
+        
+        
+        
+
+
+
+    </Grid>
+</ContentPage>

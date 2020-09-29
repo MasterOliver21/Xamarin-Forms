@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
+             mc:Ignorable="d"
+             x:Class="TesteNavegation.Views.CadastroUsuarioPage"  
+             Title="Cadastro">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Limpar" Priority = "1" Order = "Primary" Command="{Binding BtnLimpar}"  
+                     IconImageSource="limpar.png"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView BackgroundColor="#DD8E39">
+    <Grid Padding="10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--Label Nome-->
+            <RowDefinition Height="Auto"/> <!--Entry Nome-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--cpf-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--CEP-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--Rua-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--Bairro-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--Cidade-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--Estado-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--Login e Senha-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!--Botoes-->
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+            <Image Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" VerticalOptions="Center"
+               HorizontalOptions="Center" Source="{Binding FotoUsuario}" HeightRequest="150"
+               Margin="15" IsVisible="{Binding VisibleUserImage}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapPhoto}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E0DFDE" CornerRadius="15" 
+              Margin="15,15,0,0" IsEnabled="True" IsVisible="{Binding BoxVisible}" VerticalOptions="Center"
+                  HorizontalOptions="Center" HeightRequest="150" WidthRequest="150">
+             <BoxView.GestureRecognizers>
+                 <TapGestureRecognizer Command="{Binding TapPhoto}"/>
+             </BoxView.GestureRecognizers>
+         </BoxView>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontAttributes="Bold"
+               Text="&#xf030;" FontSize="60" VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               TextColor="Snow" IsVisible="{Binding LabelPhotoVisible}" x:Name="Label"
+               Margin="20,20,0,10">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String" Android="fa-solid-900.ttf#Font Awesome 5 Free Solid"
+                                                           iOS="Font Awesome 5 Free"/>
+                </Label.FontFamily>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapPhoto}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label Grid.Row="1" Text="Nome:" TextColor="Black"/>
+        <Entry Grid.Row="2" Grid.ColumnSpan="2" Placeholder="Nome Completo"
+               Text="{Binding EntryNome}" FontSize="Large"/>  <!--Nome-->
+        <Label Grid.Row="3" Text="CPF:" TextColor="Black"/>
+        <Entry Grid.Row="4" Grid.ColumnSpan="2" Placeholder="CPF - Somente os numeros" Keyboard="Numeric"
+               Text="{Binding EntryCpf}" MaxLength="14" TextChanged="Entry_TextCpfChanged" 
+               TextColor="{Binding LabelColorCpf}" FontSize="Large">
+                <Entry.Behaviors>
+                    <behaviorPack:MaskedBehavior Mask="XXX.XXX.XXX-XX"/>
+                </Entry.Behaviors>
+        </Entry><!--cpf-->
+        
+        
+
+    <Label Grid.Row="5" Grid.Column="0"  Text="Login:" TextColor="Black"/>
+    <Entry Grid.Row="6" Grid.ColumnSpan="2" Placeholder="Login" FontSize="Large" Text="{Binding EntryLogin}"/><!--Login-->
+    <Label Grid.Row="7" Grid.Column="0" Text="Senha" TextColor="Black"/>
+    <Entry Grid.Row="8" Grid.ColumnSpan="2" Placeholder="Max. 16 caracteres" IsPassword="{Binding BoolVisibleSenha}" 
+           FontSize="Large" BackgroundColor="{Binding BgSenha}" Text="{Binding EntrySenha}"
+           MaxLength="16" TextChanged="Entry_TextSenhaChanged"/><!--Senha-->
+    <Image Grid.Row="8" Grid.Column="1" Source="{Binding CaminhoSenha}" Aspect="AspectFit" HorizontalOptions="End"
+           HeightRequest="20" WidthRequest="20">
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer
+                Command="{Binding Tapped_VisibleSenha}"/>
+        </Image.GestureRecognizers>
+    </Image>
+    
+    <Label Grid.Row="9" Grid.Column="0" Text="Confirmar Senha" TextColor="Black"/>
+    <Entry Grid.Row="10" Grid.ColumnSpan="2" 
+           Placeholder="Max. 16 caracteres" IsPassword="{Binding BoolVisibleConfirmaSenha}" FontSize="Large"
+           BackgroundColor="{Binding BgConfirmaSenha}" TextChanged="Entry_TextConfirmaSenhaChanged"
+           MaxLength="16" Text="{Binding EntryCofirmaSenha}" IsEnabled="{Binding Liberado}"/><!-- Confirma Senha-->
+    
+    
+    <Image Grid.Row="10" Grid.Column="1" Source="{Binding CaminhoConfirmaSenha}" HorizontalOptions="End"
+           HeightRequest="20" WidthRequest="20">
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer
+                Command="{Binding Tapped_VisibleConfirmaSenha}"/>
+        </Image.GestureRecognizers>
+    </Image>
+    
+        <Label Grid.Row="11" Text="CEP:" TextColor="Black"/>
+        <Entry Grid.Row="12" Grid.ColumnSpan="2" Placeholder="CEP" FontSize="Large" Keyboard="Numeric" TextChanged="Entry_TextCepChanged" 
+               Text="{Binding EntryCep}" MaxLength="9" TextColor="{Binding LabelColorCep}">
+            <Entry.Behaviors>
+                <behaviorPack:MaskedBehavior Mask="XXXXX-XXX"/>
+            </Entry.Behaviors>
+        </Entry><!--CEP-->
+        
+        <Label Grid.Row="13" Text="Rua:" TextColor="Black" IsVisible="{Binding BoolRua}"/>
+        <Entry Grid.Row="14" Grid.ColumnSpan="2" FontSize="Large" IsVisible="{Binding BoolRua}"
+               Text="{Binding EntryRua}" IsEnabled="False"/> <!--Rua-->
+        <Label Grid.Row="15" Text="Bairro:" TextColor="Black" IsVisible="{Binding BoolBairro}"/>
+        <Entry Grid.Row="16" Grid.ColumnSpan="2" FontSize="Large" IsVisible="{Binding BoolBairro}"
+               Text="{Binding EntryBairro}" IsEnabled="False"/><!--Bairro-->
+        <Label Grid.Row="17" Text="Cidade:" TextColor="Black" IsVisible="{Binding BoolCidade}"/>
+        <Entry Grid.Row="18" Grid.ColumnSpan="2" FontSize="Large" IsVisible="{Binding BoolCidade}"
+               Text="{Binding EntryCidade}" IsEnabled="False"/><!--Cidade-->
+        <Label Grid.Row="19" Text="Estado:" TextColor="Black" IsVisible="{Binding BoolEstado}"/>
+        <Entry Grid.Row="20" Grid.ColumnSpan="2" FontSize="Large" IsVisible="{Binding BoolEstado}"
+               Text="{Binding EntryEstado}" IsEnabled="False"/><!--Estado-->
+        
+
+        <Button Grid.Row="21" Grid.Column="1" Text="Cadastrar" IsVisible="{Binding BoolSalvar}" 
+                Command="{Binding BtnSalvar}" VerticalOptions="End" BackgroundColor="#DD8A24"
+                TextColor="#592E00" CornerRadius="15" BorderWidth="5" BorderColor="#472700"
+                FontAttributes="Bold"/>
+        <Button Grid.Row="21" Grid.Column="0" Text="Cancelar" IsVisible="{Binding BoolCancelar}" 
+                Command="{Binding BtnCancelar}" VerticalOptions="End" BackgroundColor="#DD8A24"
+                TextColor="#592E00" CornerRadius="15" BorderWidth="5" BorderColor="#472700"
+                FontAttributes="Bold"/>
+    </Grid>
+    </ScrollView>
+</ContentPage>
